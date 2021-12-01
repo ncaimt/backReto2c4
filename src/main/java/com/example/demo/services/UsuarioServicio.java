@@ -40,7 +40,7 @@ public class UsuarioServicio {
             return usuario;
         } else {
             Optional<Usuario> e = repositorio.getById(usuario.getId());
-            if (e.isEmpty()) {
+            if (e.isPresent()) {
                 if (existeEmail(usuario.getEmail()) == false) {
                     return repositorio.save(usuario);
                 } else {
@@ -57,7 +57,7 @@ public class UsuarioServicio {
 
         if (usuario.getId() != null) {
             Optional<Usuario> usuarioDb = repositorio.getById(usuario.getId());
-            if (!usuarioDb.isEmpty()) {
+            if (usuarioDb.isPresent()) {
                 if (usuario.getIdentification() != null) {
                     usuarioDb.get().setIdentification(usuario.getIdentification());
                 }
@@ -94,7 +94,7 @@ public class UsuarioServicio {
     public boolean delete(int userId) {
         Optional<Usuario> usuario = repositorio.getById(userId);
         
-        if (usuario.isEmpty()){
+        if (!usuario.isPresent()){
             return false;
         }else{
             repositorio.delete(userId);
