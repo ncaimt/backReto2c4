@@ -40,13 +40,16 @@ public class UsuarioServicio {
             return usuario;
         } else {
             Optional<Usuario> e = repositorio.getById(usuario.getId());
-            if (e.isPresent()) {
+            if (!e.isPresent()) {
                 if (existeEmail(usuario.getEmail()) == false) {
+                     System.out.println("se creo ussuario");
                     return repositorio.save(usuario);
                 } else {
+                    System.out.println("no se pudo crear usuario primer else");
                     return usuario;
                 }
             } else {
+                System.out.println("no se pudo crear usuario segundo else");
                 return usuario;
             }
         }

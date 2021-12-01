@@ -14,10 +14,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
  *
  * @author nacai
  */
-@Document(collection = "usuarios")
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "usuarios")
 
 public class Usuario {
     
