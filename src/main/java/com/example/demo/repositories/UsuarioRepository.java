@@ -29,12 +29,12 @@ public class UsuarioRepository {
     
     public boolean existeEmail(String email){
         Optional<Usuario> usuarioX = crudUsuarioRepository.findByEmail(email);
-        return !usuarioX.isEmpty();
+        return usuarioX.isPresent();
     }
     
     public Usuario autenticarUsuario(String email, String password ){
         Optional<Usuario> usuarioX = crudUsuarioRepository.findByEmailAndPassword(email, password);
-        if(usuarioX.isEmpty()){
+        if(!usuarioX.isPresent()){
             return new Usuario();
         }
         else{
