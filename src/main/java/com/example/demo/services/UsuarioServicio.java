@@ -42,11 +42,17 @@ public class UsuarioServicio {
             Optional<Usuario> e = repositorio.getById(usuario.getId());
             if (!e.isPresent()) {
                 if (existeEmail(usuario.getEmail()) == false) {
+<<<<<<< HEAD
                      System.out.println("se creo ussuario");
+=======
+                    System.out.println("se creo ussuario");
+>>>>>>> b7304a02c7820e2484817e96171e9fd3fcea6a74
                     return repositorio.save(usuario);
+                    
                 } else {
                     System.out.println("no se pudo crear usuario primer else");
                     return usuario;
+                    
                 }
             } else {
                 System.out.println("no se pudo crear usuario segundo else");
