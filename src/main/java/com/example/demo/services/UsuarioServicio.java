@@ -88,6 +88,9 @@ public class UsuarioServicio {
                 if (usuario.getZone() != null) {
                     usuarioDb.get().setZone(usuario.getZone());
                 }
+                if (usuario.getType() != null) {
+                    usuarioDb.get().setType(usuario.getType());
+                }
 
                 repositorio.update(usuarioDb.get());
                 return usuarioDb.get();
