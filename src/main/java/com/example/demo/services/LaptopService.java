@@ -38,7 +38,7 @@ public class LaptopService {
 
         if (laptop.getId() != null) {
             Optional<Laptop> laptopDb = repositorio.getById(laptop.getId());
-            if (!laptopDb.isEmpty()) {
+            if (laptopDb.isPresent()) {
                 if (laptop.getBrand() != null) {
                     laptopDb.get().setBrand(laptop.getBrand());
                 }
@@ -86,7 +86,7 @@ public class LaptopService {
     public boolean delete(int userId) {
         Optional<Laptop> laptop = repositorio.getById(userId);
         
-        if (laptop.isEmpty()){
+        if (!laptop.isPresent()){
             return false;
         }else{
             repositorio.delete(userId);

@@ -40,13 +40,22 @@ public class UsuarioServicio {
             return usuario;
         } else {
             Optional<Usuario> e = repositorio.getById(usuario.getId());
-            if (e.isEmpty()) {
+            if (!e.isPresent()) {
                 if (existeEmail(usuario.getEmail()) == false) {
+
+                     System.out.println("se creo ussuario");
+
+                    System.out.println("se creo ussuario");
+
                     return repositorio.save(usuario);
+                    
                 } else {
+                    System.out.println("no se pudo crear usuario primer else");
                     return usuario;
+                    
                 }
             } else {
+                System.out.println("no se pudo crear usuario segundo else");
                 return usuario;
             }
         }
@@ -57,7 +66,7 @@ public class UsuarioServicio {
 
         if (usuario.getId() != null) {
             Optional<Usuario> usuarioDb = repositorio.getById(usuario.getId());
-            if (!usuarioDb.isEmpty()) {
+            if (usuarioDb.isPresent()) {
                 if (usuario.getIdentification() != null) {
                     usuarioDb.get().setIdentification(usuario.getIdentification());
                 }
@@ -94,7 +103,7 @@ public class UsuarioServicio {
     public boolean delete(int userId) {
         Optional<Usuario> usuario = repositorio.getById(userId);
         
-        if (usuario.isEmpty()){
+        if (!usuario.isPresent()){
             return false;
         }else{
             repositorio.delete(userId);
