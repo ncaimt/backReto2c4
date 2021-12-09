@@ -56,7 +56,7 @@ public class UsuarioController {
     }
     
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Usuario update(@RequestBody Usuario usuario) {
         return servicio.update(usuario);
     }
