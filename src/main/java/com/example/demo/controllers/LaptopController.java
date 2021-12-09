@@ -48,7 +48,7 @@ public class LaptopController {
     }
     
     @PutMapping("/update")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.CREATED)
     public Laptop update(@RequestBody Laptop laptop) {
         return servicio.update(laptop);
     }
